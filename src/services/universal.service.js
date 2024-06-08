@@ -183,7 +183,7 @@ export const insertMany = async (table, columnArr, valueArr) => {
             for(let i = 2; i <= len; i++){
                 str += ', ' + `$${i}`;
             }
-            return str;
+            return str
         }
 
         const column = replace(columnArr);
