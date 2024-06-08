@@ -1,12 +1,12 @@
 import { pool } from "../config/pgdb.js";
 
 
-export const createOtpTable = async () => {
+export const createOtpTable = () => {
 
     try {
         const query = `
             CREATE TABLE IF NOT EXISTS otps (
-                email VARCHAR(128),
+                email VARCHAR(128) UNIQUE,
                 otp VARCHAR(6)
             );
         `;

@@ -1,6 +1,6 @@
 import { pool } from '../config/pgdb.js';
 
-export const refreshDb = async () => {
+export const refreshDb = () => {
     try{
         const query = `
             CREATE TABLE IF NOT EXISTS refreshtoken(
@@ -8,8 +8,12 @@ export const refreshDb = async () => {
                 token VARCHAR(256) NOT NULL
             );
         `
-        const res = await pool.query(query);
-        console.log("Refresh token db yaratildi...");
+        const res = pool.query(query, [], (err, result) => {
+            if(err){
+                throw err
+            }
+            console.log("Refresh token db yaratildi...");
+        });
         return res;
     } catch(err) {
         throw err;

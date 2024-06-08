@@ -1,7 +1,7 @@
 import { pool } from "../config/pgdb.js";
 
 
-export const createCourseTable = async () => {
+export const createCourseTable = () => {
 
     try {
         const query = `

@@ -18,13 +18,13 @@ export const router = Router();
 export const setTable = async (req, res) => {
     try {
 
-        await createUserTable();
-        await createCourseTable();
-        await createUserCourseTable();
-        await createCoursFileTable();
-        await createFileTable();
-        await createOtpTable();
-        await refreshDb();
+        createUserTable();
+        refreshDb();
+        createCourseTable();
+        createFileTable();
+        createOtpTable();
+        createUserCourseTable();
+        createCoursFileTable();
         return res.status(200).send({
             message: "All created"
         })
@@ -32,9 +32,9 @@ export const setTable = async (req, res) => {
         console.log(err);
         return res.status(500).send({
             error: err
-        })
-    }
-}
+        });
+    };
+};
 
 
 

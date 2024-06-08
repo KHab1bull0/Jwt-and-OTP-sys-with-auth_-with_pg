@@ -1,11 +1,9 @@
 import { pool } from "../config/pgdb.js";
-import { hashPassword } from "../utils/hash.js";
 
 export const createUser = async (email, password, role) => {
     try{
 
         const query = 'INSERT INTO users(email, password, role) values ($1, $2, $3) RETURNING *;';
-        const hashpass = await hashPassword(password);
         const res = await pool.query(query, [email, hashpass, role]);
         return res.rows
 
@@ -32,7 +30,6 @@ export const getUser = async (email) => {
         const query = 'SELECT * FROM users WHERE email = $1;';
         const values = [email]
         const res = await pool.query(query, values);
-        console.log(res)
         return res.rows[0];
 
     } catch (err){

@@ -1,7 +1,7 @@
 import { pool } from "../config/pgdb.js";
 
 
-export const createCoursFileTable = async () => {
+export const createCoursFileTable = () => {
 
     try {
         const query = `
@@ -14,7 +14,7 @@ export const createCoursFileTable = async () => {
             );
         `;
 
-        const info = pool.query(query, [], (err, result) => {
+        const info =  pool.query(query, [], (err, result) => {
             if(err){
                 throw err
             }
