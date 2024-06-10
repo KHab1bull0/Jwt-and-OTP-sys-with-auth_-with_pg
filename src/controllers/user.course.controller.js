@@ -1,39 +1,41 @@
-// import { deleteOne, getCourse, getOne, setCourse } from "../services/user.course.service.js";
-// import { userCourseValidation } from "../validation/user.course.valid.js";
+import { getOneInt } from "../services/universal.service.js";
+import { userCourseValidation } from "../validation/user.course.valid.js";
 
 
-// export const setUserCourse = async (req, res) => {
-//     try {
-//         const body = await userCourseValidation(req.body);
+export const setUserCourse = async (req, res) => {
+    try {
+        const body = await userCourseValidation(req.body);
 
-//         const data1 = await getOne(body.userId);
+        const { id } = req.params
 
-//         if (!data1.data1.length) {
-//             return res.status(400).send({
-//                 message: "Bunday user mavjud emas"
-//             });
-//         }
+        const data1 = await getOneInt('userCourse', 'id', );
 
-//         if (data1.data2.length) {
-//             return res.status(400).send({
-//                 message: "Data already exist"
-//             })
-//         }
+        if (!data1.data1.length) {
+            return res.status(400).send({
+                message: "Bunday user mavjud emas"
+            });
+        }
 
-//         const data2 = await setCourse(body);
+        if (data1.data2.length) {
+            return res.status(400).send({
+                message: "Data already exist"
+            })
+        }
 
-//         return res.status(201).send({
-//             message: "User Course Created",
-//             data: data2
-//         })
+        const data2 = await setCourse(body);
 
-//     } catch (err) {
-//         console.log(err);
-//         return res.status(500).send({
-//             error: err
-//         });
-//     }
-// }
+        return res.status(201).send({
+            message: "User Course Created",
+            data: data2
+        })
+
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send({
+            error: err
+        });
+    }
+}
 
 // export const getUserCourse = async (req, res) => {
 //     try {

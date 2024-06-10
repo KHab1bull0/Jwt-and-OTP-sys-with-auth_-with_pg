@@ -201,4 +201,3 @@ export const insertMany = async (table, columnArr, valueArr) => {
 
 
 
-
