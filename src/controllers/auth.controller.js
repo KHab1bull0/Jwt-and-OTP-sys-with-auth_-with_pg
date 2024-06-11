@@ -38,6 +38,7 @@ export const signUpUser = async (req, res) => {
                 message: "Email mavjud"
             })
         }
+        
         return res.status(500).send({
             message: "Xatolik",
             error: err
@@ -46,7 +47,7 @@ export const signUpUser = async (req, res) => {
 };
 
 export const signInUser = async (req, res) => {
-    try {
+    try {   
         const validData = await userValidation(req.body);
         const user = await getUser(validData.email);
         console.log(user)
@@ -93,8 +94,7 @@ export const getMeUser = async (req, res) => {
     try {
 
         const userInfo = req.user;
-        console.log(userInfo)
-        const data = await getUser(userInfo.email);
+        const data = await getOneVarchar('users', 'email', userInfo.email);
         
         return res.status(200).send({
             data: data,

@@ -6,19 +6,6 @@ import { pool } from "../config/pgdb.js"
  * @param {string} column 
  * @param {string} columnElem -> column type varchar
  * @returns 
- * ```
- * export const getOneVarchar = async (table, column, columnElem) => {
-    try{
-
-        const query = `SELECT * FROM ${table} WHERE ${column} = '${columnElem}';`
-        const res = await pool.query(query);
-        return res.rows
-
-    }catch(err){
-        throw err
-    }
-}
- * ```
  */
 export const getOneVarchar = async (table, column, columnElem) => {
     try {
@@ -39,19 +26,6 @@ export const getOneVarchar = async (table, column, columnElem) => {
  * @param {string} columnElem -> column type varchar
  * @returns 
  * 
- * ```
- * export const getOneInt = async (table, column, columnElem) => {
-    try{
-
-        const query = `SELECT * FROM ${table} WHERE ${column} = ${columnElem};`
-        const res = await pool.query(query);
-        return res.rows;
-
-    }catch(err){
-        throw err
-    };
-};
- * ```
  */
 export const getOneInt = async (table, column, columnElem) => {
     try {
@@ -71,19 +45,6 @@ export const getOneInt = async (table, column, columnElem) => {
  * @param {string} table 
  * @returns 
  * 
- * ```
- * export const getAll = async (table) => {
-    try{
-
-        const query = `SELECT * FROM ${table}`
-        const res = await pool.query(query);
-        return res.rows
-
-    }catch(err){
-        throw err
-    }
-}
- * ```
  */
 export const getAll = async (table) => {
     try {
@@ -97,6 +58,7 @@ export const getAll = async (table) => {
     }
 }
 
+
 /**
  * 
  * @param {string} table 
@@ -107,19 +69,6 @@ export const getAll = async (table) => {
  * @returns 
  * 
  * 
- * ```
- * export const putOne = async (table, putTable, newelem, column, columnElem) => {
-    try{
-        console.log(table, putTable, newelem, column, columnElem);
-        const query = `UPDATE ${table} SET ${putTable} = ${newelem} WHERE ${column} = '${columnElem}';`
-        const res = await pool.query(query);
-        return res.rows
-
-    }catch(err){
-        throw err
-    }
-}
-```
  */
 export const putOne = async (table, putTable, newelem, column, columnElem) => {
     try {
