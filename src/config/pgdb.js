@@ -4,11 +4,14 @@ dotenv.config()
 
 const { Pool } = pg
 
+
+const { DBHOST, DBNAME, DBPORT, DBPASSWORD, DBUSER } = process.env
+
 export const pool = new Pool({
-    user: process.env.DBUSER,
-    password: process.env.DBPASSWORD,
-    host: process.env.DBHOST,
-    port: process.env.DBPORT,
-    database: process.env.DBNAME
+    user: DBUSER,
+    password: DBPASSWORD,
+    host: DBHOST,
+    port: DBPORT,
+    database: DBNAME
 });
 
