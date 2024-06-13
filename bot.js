@@ -7,7 +7,7 @@ dotenv.config();
 
 
 
-const bot = new Bot("7293795154:AAGZvKlCNHT1d8KQeUMoSCYHpIPa5Wl93h8"); // <-- place your bot token in this string
+const bot = new Bot(process.env.BOT_TOKEN); 
 
 function initial() {
     return { pizzaCount: 0, lastButtons: "mainButtons", currentButtons: "mainButtons" }
@@ -51,7 +51,7 @@ async function register(conversation, msg) {
  
      const res = await insertMany('users', ['email', 'password'], [body.email, body.password]);
      await msg.reply(`"${res[0]}"`);
-     
+
      
    } catch (error) {
         await msg.reply('Xatolik')
