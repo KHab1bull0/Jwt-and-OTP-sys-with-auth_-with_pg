@@ -63,7 +63,6 @@ const PORT = process.env.PORT
 
 app.listen(PORT, (err) => {
     if (err) {
-        console.log("Server error");
         console.log(err);
     };
     console.log(`Server is working on port : ${PORT}\n`);
